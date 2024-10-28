@@ -1,47 +1,42 @@
-# Server Configuration
 server:
-  port: 8080  # Default port for the Spring Boot application
+  port: 8080
 
 
 spring:
   datasource:
-    url: jdbc:sqlserver://localhost:1433;databaseName=library_management  # Update the host and database name as needed
+    url: jdbc:sqlserver://localhost:1433;databaseName=library_management
     username: test
-    password: test  # Replace with your SQL Server password
+    password: test
     driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
 
   jpa:
     hibernate:
-      ddl-auto: update  # Automatically update the database schema
-    show-sql: true      # Display SQL queries in the log
+      ddl-auto: update
+    show-sql: true
     properties:
       hibernate:
-        dialect: org.hibernate.dialect.SQLServerDialect  # Dialect for SQL Server
+        dialect: org.hibernate.dialect.SQLServerDialect
 
-# Email Configuration (SMTP)
 spring:
   mail:
-    host: smtp.gmail.com  # SMTP server, change to your SMTP provider (e.g., smtp.mailtrap.io, smtp.example.com)
-    port: 587             # Port for the SMTP server
-    username: your_email@gmail.com  # Your SMTP email (use a dedicated app password if using Gmail)
-    password: your_gmail_app_password  # Replace with the SMTP server password (e.g., Gmail app password)
+    host: smtp.gmail.com
+    port: 587
+    username: test@test.com
+    password: test
     properties:
-      mail:
-        smtp:
-          auth: true
-          starttls:
-            enable: true
-            required: true
+      mail.smtp.auth: true
+      mail.smtp.starttls.enable: true
+      mail.smtp.starttls.required: true
 
-# Logging Configuration
+
 logging:
   level:
     org.hibernate.SQL: DEBUG
     org.hibernate.type.descriptor.sql.BasicBinder: TRACE
   file:
-    path: logs/application.log  # Log file location (can customize if needed)
+    path: logs/application.log
 
-# Application-specific configurations (optional)
+
 app:
-  max-books-allowed: 5  # Maximum books a member can loan
-  late-fee-threshold: 14  # Threshold in days before a book is considered late
+  max-books-allowed: 5
+  late-fee-threshold: 14
